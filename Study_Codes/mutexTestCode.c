@@ -7,7 +7,7 @@
 pthread_mutex_t mut = PTHREAD_MUTEX_INITIALIZER;
 
 
-void* thread_fucntion(void* arg){
+void* thread_function(void* arg){
 
   int id = (int)arg;
 
@@ -33,12 +33,13 @@ void* thread_fucntion(void* arg){
 int main(int argc, char* argv[]){
 
   pthread_t th1,th2;
-
-  if(pthread_create(&th1,NULL,thread_function,NULL) != 0){
+  int id1 =1;
+  int id2= 2;
+  if(pthread_create(&th1,NULL,thread_function,(void*)id1) != 0){
 	perror("pthread_create");
 	return -1;
   }
-  if(pthread_create(&th2,NULL,thread_function,NULL) != 0){
+  if(pthread_create(&th2,NULL,thread_function,(void*)id2) != 0){
 	perror("pthread_create");
 	return -1;
   }
