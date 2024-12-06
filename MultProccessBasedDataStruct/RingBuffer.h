@@ -35,21 +35,21 @@ public:
 
 	uint32_t isAvaliable() noexcept
 	{
-		return head - tail;
+		return (buffSize + (head - tail))% buffSize;
 	}
 
 private:
 	
-	const uint32_t						buffSize;
+	const uint32_t					buffSize;
 	
 	std::unique_ptr<T[]>				buffer;
 	
-	int									head;
+	int						head;
 	
-	int									tail;
+	int						tail;
 	
-	bool								isFull;
+	bool						isFull;
 	
-	std::mutex							bufferMutex;
+	std::mutex					bufferMutex;
 };
 
